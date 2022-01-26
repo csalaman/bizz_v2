@@ -34,8 +34,8 @@ class _ServiceEditorState extends State<ServiceEditor> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          CustomText.regularTextWidget('Services', 22),
-          CustomText.subTextWidget('Manage business services', 12)
+          CustomText.regularTextWidget('Available Services', 22),
+          CustomText.subTextWidget('Manage, edit, or create services', 12)
         ],
       );
     }
@@ -43,7 +43,7 @@ class _ServiceEditorState extends State<ServiceEditor> {
     /// Service Editor TextField with Add Action
     Widget _serviceEditorAddWidget() {
       return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        padding: const EdgeInsets.only(bottom: 10.0),
         child: TextField(
             controller: _controller,
             textInputAction: TextInputAction.go,
@@ -58,11 +58,11 @@ class _ServiceEditorState extends State<ServiceEditor> {
                   },
                   icon: const Icon(Icons.add),
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: UnderlineInputBorder(
                     borderSide:
                         BorderSide(width: 1.0, color: Colors.grey.shade500),
                     borderRadius: const BorderRadius.all(Radius.circular(0.0))),
-                focusedBorder: const OutlineInputBorder(
+                focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(width: 2.0, color: Colors.grey),
                     borderRadius: BorderRadius.all(Radius.circular(0.0))))),
       );
