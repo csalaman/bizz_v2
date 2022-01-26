@@ -19,7 +19,7 @@ class _AddressEditorState extends State<AddressEditor> {
     Widget _addressHeader() {
       return Row(
         children: <Widget>[
-          CustomText.regularTextWidget('Address', 24),
+          CustomText.regularTextWidget('Address', 22),
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
             child: Icon(

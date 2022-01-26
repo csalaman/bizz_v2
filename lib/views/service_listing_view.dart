@@ -1,4 +1,5 @@
 import 'package:bizz_v2/components/address_editor/address_editor.dart';
+import 'package:bizz_v2/components/service_editor/service_editor.dart';
 import 'package:bizz_v2/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -30,12 +31,17 @@ class _ServiceListingViewState extends State<ServiceListingView> {
               verticalSpacer,
               CustomText.primaryTextWidget('Service Listings'),
               CustomText.subTwoTextWidget(
-                  'Manage service listings for your business.'),
+                  'Manage service listings for your business'),
               /**
                * Business Address Editor
                */
               verticalSpacer,
-              const AddressEditor()
+              const AddressEditor(),
+              /**
+               * Service Editor
+               */
+              verticalSpacer,
+              ServiceEditor()
             ],
           ),
         ),
