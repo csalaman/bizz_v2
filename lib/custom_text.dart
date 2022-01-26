@@ -11,7 +11,8 @@ class CustomText {
   static regularTextWidget(String text, double fontSize) {
     return Text(
       text,
-      style: _textStyleOptions(fontSize, FontWeight.normal, Colors.grey.shade700),
+      style:
+          _textStyleOptions(fontSize, FontWeight.normal, Colors.grey.shade700),
     );
   }
 
@@ -44,4 +45,10 @@ class CustomText {
     );
   }
 
+  static subTextWidget(String text, double fontSize) {
+    return Text(
+      text,
+      style: _textStyleOptions(fontSize, FontWeight.w400, Colors.grey.shade400),
+    );
+  }
 }
