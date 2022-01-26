@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../../custom_text.dart';
 
 class ServiceEditor extends StatefulWidget {
+  const ServiceEditor({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _ServiceEditorState();
 }
@@ -11,9 +13,7 @@ class ServiceEditor extends StatefulWidget {
 // FUTURE TODO:
 class _ServiceEditorState extends State<ServiceEditor> {
   final TextEditingController _controller = TextEditingController();
-  final List<ServiceItem> _services = [
-    const ServiceItem(serviceName: 'Clogged Plumbing')
-  ];
+  final List<ServiceItem> _services = [];
 
   @override
   Widget build(BuildContext context) {
@@ -40,26 +40,34 @@ class _ServiceEditorState extends State<ServiceEditor> {
                 suffixIcon: IconButton(
                   onPressed: () {
                     // FUTURE TODO: Implement adding service callback
-                    print('Adding');
+                    var serviceName = _controller.text;
+
+                    if (serviceName != '') {
+                      setState(() {
+                        _services.add(ServiceItem(serviceName: serviceName));
+                      });
+                    }
                   },
                   icon: const Icon(Icons.add),
                 ),
                 enabledBorder: OutlineInputBorder(
                     borderSide:
                         BorderSide(width: 1.0, color: Colors.grey.shade500),
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0))),
+                    borderRadius: const BorderRadius.all(Radius.circular(0.0))),
                 focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(width: 2.0, color: Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))))),
+                    borderRadius: BorderRadius.all(Radius.circular(0.0))))),
       );
     }
 
     Widget _availableServices() {
-      return const Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 6.0,
-          ),
-          child: ServiceItem(serviceName: 'Clogged Plumbing'));
+      return Wrap(
+        alignment: WrapAlignment.start,
+        direction: Axis.horizontal,
+        spacing: 10.0,
+        runSpacing: 10.0,
+        children: _services.map((e) => e).toList(),
+      );
     }
 
     return Column(

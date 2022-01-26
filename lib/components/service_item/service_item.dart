@@ -20,7 +20,7 @@ class ServiceItem extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            CustomText.regularTextWidget('Dehydration Treatment', 14),
+            CustomText.regularTextWidget(serviceName, 14),
             const Padding(
               padding: EdgeInsets.only(left: 10.0),
               child: Icon(
