@@ -8,30 +8,14 @@ class ServiceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(4.0),
-      decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.grey.shade700,
-          ),
-          borderRadius: const BorderRadius.all(Radius.circular(20))),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            CustomText.regularTextWidget(serviceName, 14),
-            const Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Icon(
-                Icons.edit_outlined,
-                color: Colors.grey,
-                size: 14,
-              ),
-            )
-          ],
+    return ActionChip(
+        backgroundColor: Colors.grey.shade200,
+        avatar: Icon(
+          Icons.settings_outlined,
+          color: Colors.grey.shade700,
+          size: 14,
         ),
-      ),
-    );
+        label: CustomText.regularTextWidget(serviceName, 14),
+        onPressed: () {});
   }
 }

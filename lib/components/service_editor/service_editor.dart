@@ -45,6 +45,10 @@ class _ServiceEditorState extends State<ServiceEditor> {
                     if (serviceName != '') {
                       setState(() {
                         _services.add(ServiceItem(serviceName: serviceName));
+                        _services.sort(
+                            (x, y) => x.serviceName.compareTo(y.serviceName));
+                        _services.sort((x, y) =>
+                            x.serviceName.length - y.serviceName.length);
                       });
                     }
                   },
