@@ -15,6 +15,17 @@ class _ServiceEditorState extends State<ServiceEditor> {
   final TextEditingController _controller = TextEditingController();
   final List<ServiceItem> _services = [];
 
+  processAddedService(String serviceName) {
+    if (serviceName != '') {
+      setState(() {
+        _services.add(ServiceItem(serviceName: serviceName));
+        _services.sort((x, y) => x.serviceName.compareTo(y.serviceName));
+        _services.sort((x, y) => x.serviceName.length - y.serviceName.length);
+        _controller.clear();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     /// Service Editor Header
@@ -35,22 +46,15 @@ class _ServiceEditorState extends State<ServiceEditor> {
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: TextField(
             controller: _controller,
+            textInputAction: TextInputAction.go,
+            onSubmitted: processAddedService,
             decoration: InputDecoration(
                 hintText: 'Enter service name ...',
                 suffixIcon: IconButton(
                   onPressed: () {
-                    // FUTURE TODO: Implement adding service callback
                     var serviceName = _controller.text;
-
-                    if (serviceName != '') {
-                      setState(() {
-                        _services.add(ServiceItem(serviceName: serviceName));
-                        _services.sort(
-                            (x, y) => x.serviceName.compareTo(y.serviceName));
-                        _services.sort((x, y) =>
-                            x.serviceName.length - y.serviceName.length);
-                      });
-                    }
+                    processAddedService(serviceName);
+                    FocusScope.of(context).unfocus();
                   },
                   icon: const Icon(Icons.add),
                 ),
@@ -68,8 +72,7 @@ class _ServiceEditorState extends State<ServiceEditor> {
       return Wrap(
         alignment: WrapAlignment.start,
         direction: Axis.horizontal,
-        spacing: 10.0,
-        runSpacing: 10.0,
+        spacing: 5.0,
         children: _services.map((e) => e).toList(),
       );
     }
