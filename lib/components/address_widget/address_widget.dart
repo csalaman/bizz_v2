@@ -19,8 +19,8 @@ class AddressWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         CustomText.subTwoTextWidget(street),
-        CustomText.subTwoTextWidget(cityAndState + ' ' + zip),
-        // CustomText.subTwoTextWidget(zip)
+        CustomText.subTwoTextWidget(cityAndState),
+        CustomText.subTwoTextWidget(zip)
       ],
     );
   }
