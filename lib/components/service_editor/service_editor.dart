@@ -14,6 +14,7 @@ class ServiceEditor extends StatefulWidget {
 class _ServiceEditorState extends State<ServiceEditor> {
   final TextEditingController _controller = TextEditingController();
   final List<ServiceItem> _services = [];
+  bool _isAddEnabled = false;
 
   processAddedService(String serviceName) {
     if (serviceName != '') {
@@ -22,6 +23,7 @@ class _ServiceEditorState extends State<ServiceEditor> {
         _services.sort((x, y) => x.serviceName.compareTo(y.serviceName));
         _services.sort((x, y) => x.serviceName.length - y.serviceName.length);
         _controller.clear();
+        _isAddEnabled = false;
       });
     }
   }
@@ -35,7 +37,7 @@ class _ServiceEditorState extends State<ServiceEditor> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CustomText.regularTextWidget('Available Services', 22),
-          CustomText.subTextWidget('Manage, edit, or create services', 12)
+          CustomText.subTextWidget('Manage Business Services', 12)
         ],
       );
     }
@@ -48,33 +50,66 @@ class _ServiceEditorState extends State<ServiceEditor> {
             controller: _controller,
             textInputAction: TextInputAction.go,
             onSubmitted: processAddedService,
+            onChanged: (input) {
+              setState(() {
+                if (input.isNotEmpty) {
+                  _isAddEnabled = true;
+                } else {
+                  _isAddEnabled = false;
+                }
+              });
+            },
             decoration: InputDecoration(
-                hintText: 'Enter service name ...',
+                hintStyle: CustomText.hintTextStyle(),
+                hintText: 'Enter a service name...',
                 suffixIcon: IconButton(
-                  onPressed: () {
-                    var serviceName = _controller.text;
-                    processAddedService(serviceName);
-                    FocusScope.of(context).unfocus();
-                  },
-                  icon: const Icon(Icons.add),
+                  onPressed: !_isAddEnabled
+                      ? null
+                      : () {
+                          var serviceName = _controller.text;
+                          processAddedService(serviceName);
+                          FocusScope.of(context).unfocus();
+                        },
+                  icon: Icon(
+                    Icons.add,
+                    color: _isAddEnabled ? Colors.blueAccent : Colors.grey,
+                  ),
                 ),
                 enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(width: 1.0, color: Colors.grey.shade500),
-                    borderRadius: const BorderRadius.all(Radius.circular(0.0))),
-                focusedBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(width: 2.0, color: Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(0.0))))),
+                  borderSide:
+                      BorderSide(width: 1.0, color: Colors.grey.shade500),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(width: 2.0, color: Colors.grey.shade500),
+                ))),
       );
     }
 
     Widget _availableServices() {
-      return Wrap(
-        alignment: WrapAlignment.start,
-        direction: Axis.horizontal,
-        spacing: 5.0,
-        children: _services.map((e) => e).toList(),
-      );
+      if (_services.isEmpty) {
+        return Center(
+          child: CustomText.subTextWidget(
+              'Start by adding the available services for your business', 12),
+        );
+      } else {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CustomText.subTextWidget(
+                  'Add/Edit/Update Available Services', 12),
+            ),
+            Wrap(
+              alignment: WrapAlignment.start,
+              direction: Axis.horizontal,
+              spacing: 5.0,
+              children: _services.map((e) => e).toList(),
+            )
+          ],
+        );
+      }
     }
 
     return Column(

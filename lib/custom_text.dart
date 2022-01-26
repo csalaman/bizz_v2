@@ -8,6 +8,10 @@ class CustomText {
         fontSize: fontSize, fontWeight: fontWeight, color: fontColor);
   }
 
+  static hintTextStyle() {
+    return _textStyleOptions(14, FontWeight.w400, Colors.grey.shade600);
+  }
+
   static regularTextWidget(String text, double fontSize) {
     return Text(
       text,
