@@ -1,4 +1,4 @@
-import 'package:bizz_v2/components/address_editor/address_editor.dart';
+import 'package:bizz_v2/components/service_area_editor/service_area_editor.dart';
 import 'package:bizz_v2/components/service_editor/service_editor.dart';
 import 'package:bizz_v2/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -28,22 +28,36 @@ class _ServiceListingViewState extends State<ServiceListingView> {
               /**
                * Service Listings Header
                */
-              verticalSpacer,
-              CustomText.primaryTextWidget('Service Listings'),
-              CustomText.subTwoTextWidget(
-                  'Manage service listings for your business'),
+              // verticalSpacer,
+              // CustomText.primaryTextWidget('Service Listings'),
+              // CustomText.subTwoTextWidget(
+              //     'Manage service listings for your business'),
               /**
-               * Business Address Editor
+               * Service Area Editor
                */
-              verticalSpacer,
-              const AddressEditor(),
+              // verticalSpacer,
+              // const ServiceAreaEditor(),
+              //   ServiceAreaEditor(headerTitle: 'Service Area'),
               /**
                * Service Editor
                */
               verticalSpacer,
-              ServiceEditor()
+              const ServiceEditor()
             ],
           ),
+        ),
+      ),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomText.primaryTextWidget('Service Listings'),
+            CustomText.subTwoTextWidget(
+                'Manage service listings for your business'),
+          ],
         ),
       ),
     );

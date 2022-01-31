@@ -32,11 +32,10 @@ class _AddressEditorState extends State<AddressEditor> {
     }
 
     Widget _addressContent() {
-      // return CustomText.subTwoTextWidget('Add your business address.');
       return const Padding(
         padding: EdgeInsets.only(top: 10.0),
         child: AddressWidget(
-            street: '19100 Willow Spring Dr',
+            street: '19100 Willow Spring Dr.',
             cityAndState: 'Germantown, MD',
             zip: '20874'),
       );

@@ -10,7 +10,6 @@ class ServiceEditor extends StatefulWidget {
   State<StatefulWidget> createState() => _ServiceEditorState();
 }
 
-// FUTURE TODO:
 class _ServiceEditorState extends State<ServiceEditor> {
   final TextEditingController _controller = TextEditingController();
   final List<ServiceItem> _services = [];
