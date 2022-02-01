@@ -24,7 +24,9 @@ class _ServiceListingViewState extends State<ServiceListingView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const <Widget> [
+              // Center(child: CustomText.subTwoTextWidget(
+              //     'Manage service listings for your business'),),
               /**
                * Service Listings Header
                */
@@ -41,22 +43,24 @@ class _ServiceListingViewState extends State<ServiceListingView> {
               /**
                * Service Editor
                */
-              verticalSpacer,
-              const ServiceEditor()
+              // verticalSpacer,
+              ServiceEditor()
             ],
           ),
         ),
       ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText.primaryTextWidget('Service Listings'),
-            CustomText.subTwoTextWidget(
-                'Manage service listings for your business'),
+            // CustomText.primaryTextWidget('Service Listings'),
+            CustomText.regularTextWidget('Service Listings', 24)
+            // CustomText.subTwoTextWidget(
+            //     'Manage service listings for your business'),
           ],
         ),
       ),

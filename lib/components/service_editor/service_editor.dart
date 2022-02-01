@@ -36,7 +36,9 @@ class _ServiceEditorState extends State<ServiceEditor> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CustomText.regularTextWidget('Available Services', 22),
-          CustomText.subTextWidget('Manage Business Services', 12)
+          // CustomText.subTextWidget('Manage Business Services', 12),
+          CustomText.subTextWidget(
+              'Manage service listings for your business', 12),
         ],
       );
     }
