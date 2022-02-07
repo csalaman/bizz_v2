@@ -60,25 +60,13 @@ class _EditServicePageState extends State<_EditServicePage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    DisplayTextField(textFieldTitle: 'Title', content: widget.serviceName),
-                    // TextFormField(
-                    //   decoration: InputDecoration(
-                    //     label: CustomText.regularTextWidget('Title', 20),
-                    //   ),
-                    // ),
-                    // TextFormField(
-                    //   decoration: InputDecoration(
-                    //     label: CustomText.regularTextWidget('Description', 20),
-                    //   ),
-                    // ),
-                    // TextFormField(
-                    //   decoration: InputDecoration(
-                    //     label: CustomText.regularTextWidget('Cost', 20),
-                    //   ),
-                    // ),
-                    // TextFormField(
-                    //   decoration: InputDecoration(label: CustomText.regularTextWidget('Deposit', 20), ),
-                    // ),
+                    DisplayTextField(
+                        textFieldTitle: 'Title', content: widget.serviceName),
+                    DisplayTextField(
+                        textFieldTitle: 'Description',
+                        content: 'Description of service'),
+                    DisplayTextField(textFieldTitle: 'Cost', content: '\$135'),
+                    DisplayTextField(textFieldTitle: 'Deposit', content: '\$50'),
                   ],
                 )),
           ),
